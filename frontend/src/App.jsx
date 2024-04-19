@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Login from './pages/login/login'
 import { Toaster } from 'react-hot-toast'
 import Register from './pages/register/register'
+import SideBar from './components/sideBar/sideBar'
 
 function App() {
 
@@ -13,6 +14,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<SideBar />} />
+
 
           {/* <Route element={<PrivateRoutes />}>
         <Route path="dashboard/*" element={<SideBar />}>
