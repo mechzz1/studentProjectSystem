@@ -25,14 +25,20 @@ function create() {
   const { register, handleSubmit, control, reset , formState: { errors } } = useForm({ resolver: zodResolver(schema) });
   const onSubmit = (data) => {
 
-    console.log(data);
+    const userData = sessionStorage.getItem('user');
+    let token = null;
+    if (userData !== null) {
+        let temp = JSON.parse(userData);
+        token = temp.token
+    }
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
       url: 'http://localhost:13000/users/create',
       headers: {
-        'Content-Type': 'application/json'
-      },
+        'Content-Type': 'application/json',
+        'access-token': `${token}`
+    },
       data: data
     };
 

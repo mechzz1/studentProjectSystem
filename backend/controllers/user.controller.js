@@ -87,6 +87,24 @@ userController.create = async (req, res) => {
     return res.status(500).send(error.toString());
   }
 };
+userController.getUserProjects = async (req, res) => {
+  try {
+    console.log("asdsdasdasd")
+    const project = await ProjectService.getAll({
+     where: {
+        userId:req.userId
+      }
+    });
+    res.status(200).send({
+      code: 200,
+      message: "Project retrive Successfully",
+      data: project,
+    });
+  } catch (error) {
+    console.log(error.toString());
+    return res.status(500).send(error.toString());
+  }
+};
 
 
 module.exports = userController;

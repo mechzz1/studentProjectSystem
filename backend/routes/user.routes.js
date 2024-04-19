@@ -47,7 +47,13 @@ router.post(
 
 router.post(
   "/create",
+  [checkAuth.verifyToken],
   UserController.create
+);
+router.post(
+  "/getUserProjects",
+  [checkAuth.verifyToken],
+  UserController.getUserProjects
 );
 
 module.exports = router;
