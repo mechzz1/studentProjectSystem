@@ -6,6 +6,8 @@ import { Toaster } from 'react-hot-toast'
 import Register from './pages/register/register'
 import SideBar from './components/sideBar/sideBar'
 import PrivateRoutes from './utils/privateRoutes'
+import Projects from './pages/projects/projects'
+import Create from './pages/create/create'
 
 
 function App() {
@@ -17,10 +19,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          <Route element={<PrivateRoutes />}>
             <Route path="dashboard/*" element={<SideBar />}>
-            
+               <Route path="projects" element={<Projects />} />
+               <Route path="create" element={<Create />} />
+
             </Route>
+          <Route element={<PrivateRoutes />}>
           </Route>
         </Routes>
 
