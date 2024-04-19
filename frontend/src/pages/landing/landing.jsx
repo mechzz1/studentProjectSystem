@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React ,{ useState, useEffect } from 'react'
 import Card from '../../components/card/appCard'
 import Masonry from 'react-masonry-css'
 import toast from 'react-hot-toast';
 import axios from 'axios'
-
-function projects() {
+import styles from './landing.module.css'
+import NavBar from '../../components/navBar/navBar'
+function landing() {
     const breakpointColumnsObj = {
         default: 3,
         1100: 2,
@@ -15,19 +16,13 @@ function projects() {
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem asperiores dolorum consequuntur! Est fuga odit aperiam nobis quisquam quas! Ea quisquam reiciendis id quos architecto, labore enim incidunt dolorem voluptates at nisi!"
     ]
     useEffect(() => {
-        const userData = sessionStorage.getItem('user');
-        let token = null;
-        if (userData !== null) {
-            let temp = JSON.parse(userData);
-            token = temp.token
-        }
+     
         let config = {
-            method: 'post',
+            method: 'get',
             maxBodyLength: Infinity,
-            url: 'http://localhost:13000/users/getUserProjects',
+            url: 'http://localhost:13000/users/getAllProjects',
             headers: {
                 'Content-Type': 'application/json',
-                'access-token': `${token}`
             },
         };
         const getUserProjects = async () => {
@@ -43,6 +38,16 @@ function projects() {
     }, []);
     return (
         <>
+            
+            <nav className="navbar navbar-light bg-light justify-content-between">
+                <a className="navbar-brand">ProjectHub</a>
+                <form className="form-inline">
+                        <button className="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Login</button>
+                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Register</button>
+
+                </form>
+            </nav>
+            <div className="container-fluid">
 
             <div className="container">
                 <Masonry
@@ -51,8 +56,6 @@ function projects() {
                     columnClassName="my-masonry-grid_column">
                     {/* array of JSX items */}
                     {
-
-
                         data.map((item, index) =>
                             <Card 
                             title={item.title} 
@@ -65,14 +68,11 @@ function projects() {
 
                         )
                     }
-
-
                 </Masonry>
-              
-
+            </div>
             </div>
         </>
     )
 }
 
-export default projects
+export default landing

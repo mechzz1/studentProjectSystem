@@ -55,5 +55,9 @@ router.post(
   [checkAuth.verifyToken],
   UserController.getUserProjects
 );
+router.get(
+  "/getAllProjects",
+  UserController.getAllProjects
+);
 
 module.exports = router;

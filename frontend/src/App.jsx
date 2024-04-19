@@ -8,6 +8,7 @@ import SideBar from './components/sideBar/sideBar'
 import PrivateRoutes from './utils/privateRoutes'
 import Projects from './pages/projects/projects'
 import Create from './pages/create/create'
+import Landing from './pages/landing/landing'
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Landing />} />
+
 
 
           <Route element={<PrivateRoutes />}>

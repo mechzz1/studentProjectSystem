@@ -105,6 +105,18 @@ userController.getUserProjects = async (req, res) => {
     return res.status(500).send(error.toString());
   }
 };
-
+userController.getAllProjects = async (req, res) => {
+  try {
+    const project = await ProjectService.getAll();
+    res.status(200).send({
+      code: 200,
+      message: "Project retrive Successfully",
+      data: project,
+    });
+  } catch (error) {
+    console.log(error.toString());
+    return res.status(500).send(error.toString());
+  }
+};
 
 module.exports = userController;
