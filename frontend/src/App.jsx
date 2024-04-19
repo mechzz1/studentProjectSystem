@@ -5,6 +5,8 @@ import Login from './pages/login/login'
 import { Toaster } from 'react-hot-toast'
 import Register from './pages/register/register'
 import SideBar from './components/sideBar/sideBar'
+import PrivateRoutes from './utils/privateRoutes'
+
 
 function App() {
 
@@ -14,18 +16,12 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<SideBar />} />
 
-
-          {/* <Route element={<PrivateRoutes />}>
-        <Route path="dashboard/*" element={<SideBar />}>
-          <Route index path="main" element={<Home />} />
-          <Route  path="app" element={<AppManagement />} />
-          <Route  path="module" element={<ModuleManagement />} />
-          <Route  path="organizations" element={<Organizations />} />
-
-        </Route>
-      </Route> */}
+          <Route element={<PrivateRoutes />}>
+            <Route path="dashboard/*" element={<SideBar />}>
+            
+            </Route>
+          </Route>
         </Routes>
 
       </BrowserRouter>
