@@ -1,0 +1,25 @@
+.secBg{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #EEF5FF !important;
+}
+
+.midCon{
+    width:30%; /* Adjust width as needed */
+    min-height: 350px ; /* Adjust height as needed */
+    background-color: white !important;
+    border-radius: 10px;
+}
+
+@media (max-width:999px) {
+    .midCon{
+        width: 100%; /* Adjust width as needed */
+        min-height: 350px ; /* Adjust height as needed */
+        background-color: white !important;
+        border-radius: 10px;
+    }
+    
+}
