@@ -41,7 +41,12 @@ function register() {
                 toast.success("Success " + `${res.data.message}`)
                 navigate('/login');
             } catch (error) {
-                toast.error("Error " + `${error}`)
+                if (error.response && error.response.data) {
+                    const { error: errorMessage } = error.response.data;
+                    toast.error("Error: " + errorMessage);
+                  } else {
+                    toast.error("An error occurred. Please try again later.");
+                  }
             }
         }
 

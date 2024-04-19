@@ -34,13 +34,27 @@ const bcrypt = require("bcryptjs");
  */
 userController.registerUser = async (req, res) => {
   try {
-    req.body.password = bcrypt.hashSync(req.body.password, 8);
-    const user = await userServiceObj.insertOrUpdate(req.body);
-    res.status(200).send({
-      code: 200,
-      message: "User Registered Successfully",
-      data: user,
-    });
+    const checkUser = await userServiceObj.findOne({
+      where: {
+        userName: req.body.userName,
+      },
+    })
+    console.log(checkUser)
+    if(!checkUser){
+      req.body.password = bcrypt.hashSync(req.body.password, 8);
+        const user = await userServiceObj.insertOrUpdate(req.body);
+        res.status(200).send({
+          code: 200,
+          message: "User Registered Successfully",
+          data: user,
+        });
+    }else{
+      res.status(500).send({
+        code: 500,
+        error: "UserName Already in use !!",
+      });
+    }
+ 
   } catch (error) {
     console.log("error", error);
     return res.status(500).send(error);

@@ -35,6 +35,9 @@ class UserService {
       returning: true,
     });
   }
+  async findOne(whereClause) {
+    return await db.User.findOne(whereClause);
+  }
   /**
    * function to get clients  
    * @param whereClause specification of data
