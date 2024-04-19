@@ -22,14 +22,14 @@ const schema = z.object({
   phase: z.string().nonempty({ message: 'Phase is required' }),
 })
 function create() {
-  const { register, handleSubmit, control, formState: { errors } } = useForm({ resolver: zodResolver(schema) });
+  const { register, handleSubmit, control, reset , formState: { errors } } = useForm({ resolver: zodResolver(schema) });
   const onSubmit = (data) => {
 
     console.log(data);
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'http://localhost:14000/users/login',
+      url: 'http://localhost:13000/users/create',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -39,11 +39,8 @@ function create() {
     const fethUsers = async () => {
       try {
         const res = await axios.request(config);
-        const userDataString = JSON.stringify(res.data);
-        sessionStorage.setItem('user', userDataString);
-        setUser(res.data)
+        reset();
         toast.success("Success " + `${res.data.message}`)
-        navigate('/dashboard/main');
       } catch (error) {
         toast.error("Error " + `${error}`)
       }
@@ -121,14 +118,17 @@ function create() {
             
                 <div className="col-md-12 pt-3">
 
-                  <InputLabel id="Phase">Age</InputLabel>
+                  <InputLabel id="Phase">Phase</InputLabel>
                   <Select
                     id="phase" labelId="Phase" variant="outlined" type="password" className='w-100'
                     {...register('phase')}
                   >
-                    <MenuItem value={"Ten"}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    <MenuItem value={"design"}>Design</MenuItem>
+                    <MenuItem value={"development"}>Development</MenuItem>
+                    <MenuItem value={"testing"}>Testing</MenuItem>
+                    <MenuItem value={"deployment"}>Deployment</MenuItem>
+                    <MenuItem value={"complete"}>Complete</MenuItem>
+
                   </Select>
                   {errors.phase && <p className='text-danger'>{errors.phase.message} </p>}
                 </div>
