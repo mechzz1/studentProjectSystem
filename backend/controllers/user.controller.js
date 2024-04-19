@@ -247,18 +247,13 @@ userController.deleteClient = async (req, res) => {
  */
 userController.loginUser = async (req, res) => {
   try {
-    console.log("hara hiri hu ha hu ha hu ha")
     const user = await userServiceObj.loginUser(req.body);
-    const userType = await userServiceObj.getuser({
-      where: {
-        email: req.body.email
-      }
-    });
+   
     res.status(200).send({
       code: 200,
       message: "User Logged In Successfully",
-      data: user,
-      userRole: userType.role,
+      token: user,
+
     });
   } catch (error) {
     console.log(error.toString());

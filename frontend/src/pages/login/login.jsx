@@ -1,4 +1,4 @@
-import React from 'react'
+import React , { useState} from 'react'
 import styles from './login.module.css'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -8,12 +8,16 @@ import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast';
 import axios from 'axios'
 
+import { useNavigate } from 'react-router-dom'
 
 const schema = z.object({
     userName: z.string().min(3, { message: "User Name is required" }),
     password: z.string().min(3, { message: "Password is required" }),
 })
 function login() {
+    const [user, setUser] = useState([]);
+    const navigate = useNavigate();
+
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(schema) });
     const onSubmit = (data) => {
 
@@ -21,7 +25,7 @@ function login() {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://localhost:14000/users/login',
+            url: 'http://localhost:13000/users/login',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -35,7 +39,7 @@ function login() {
                 sessionStorage.setItem('user', userDataString);
                 setUser(res.data)
                 toast.success("Success " + `${res.data.message}`)
-                navigate('/dashboard/main');
+                navigate('/dashboard/projects');
             } catch (error) {
                 toast.error("Error " + `${error}`)
             }

@@ -41,7 +41,7 @@ router.post("/login", UserController.loginUser);
  */
 router.post(
   "/register",
-  [checkDuplicateEmail.checkDuplicateEmail], [checkAuth.verifyToken],
+  [checkDuplicateEmail.checkDuplicateEmail],
   UserController.registerUser
 );
 /**

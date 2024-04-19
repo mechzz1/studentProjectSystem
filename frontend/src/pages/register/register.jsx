@@ -7,6 +7,8 @@ import Button from '@mui/material/Button'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
 const schema = z.object({
     userName: z.string().min(3, { message: "User Name is required" }),
     name: z.string().min(3, { message: "Name is required" }),
@@ -15,13 +17,15 @@ const schema = z.object({
 })
 function register() {
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(schema) });
+    const navigate = useNavigate();
+
     const onSubmit = (data) => {
 
         console.log(data);
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://localhost:14000/users/login',
+            url: 'http://localhost:13000/users/register',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -31,11 +35,11 @@ function register() {
         const fethUsers = async () => {
             try {
                 const res = await axios.request(config);
-                const userDataString = JSON.stringify(res.data);
-                sessionStorage.setItem('user', userDataString);
-                setUser(res.data)
+                // const userDataString = JSON.stringify(res.data);
+                // sessionStorage.setItem('user', userDataString);
+                // setUser(res.data)
                 toast.success("Success " + `${res.data.message}`)
-                navigate('/dashboard/main');
+                navigate('/login');
             } catch (error) {
                 toast.error("Error " + `${error}`)
             }

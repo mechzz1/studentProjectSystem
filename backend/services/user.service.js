@@ -82,7 +82,7 @@ class UserService {
      */
     const user = await this.getUser({
       where: {
-        email: data.email,
+        userName: data.userName,
       },
     });
     /**
