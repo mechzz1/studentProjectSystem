@@ -23,7 +23,7 @@ function landing() {
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: 'http://localhost:13000/users/getAllProjects',
+            url: 'http://16.16.28.103:13000/users/getAllProjects',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -44,7 +44,7 @@ function landing() {
     }, [query]);
     const fetchData = async () => {
         try {
-            const response = await axios.get(`http://localhost:13000/users/search?query=${query}`);
+            const response = await axios.get(`http://16.16.28.103:13000/users/search?query=${query}`);
             console.log(response.data.data);
             setData(response.data.data);
 

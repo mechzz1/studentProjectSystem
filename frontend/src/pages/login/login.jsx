@@ -26,7 +26,7 @@ function login() {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://localhost:13000/users/login',
+            url: 'http://16.16.28.103:13000/users/login',
             headers: {
                 'Content-Type': 'application/json'
             },

@@ -34,7 +34,7 @@ function create() {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'http://localhost:13000/users/create',
+      url: 'http://16.16.28.103:13000/users/create',
       headers: {
         'Content-Type': 'application/json',
         'access-token': `${token}`
