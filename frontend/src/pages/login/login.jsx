@@ -1,4 +1,4 @@
-import React , { useState} from 'react'
+import React, { useState } from 'react'
 import styles from './login.module.css'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -7,6 +7,7 @@ import Button from '@mui/material/Button'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast';
 import axios from 'axios'
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom'
 
@@ -72,16 +73,19 @@ function login() {
                                         {...register('password')} />
                                     {errors.password && <p className='text-danger'>{errors.password.message} </p>}
                                 </div>
-                              
+
                                 <div className="col-md-12 d-flex justify-content-center pt-2">
                                     <Button variant="contained" type="submit" className='w-100 p-2' >Login</Button>
                                 </div>
                                 <div className="col-md-12 d-flex justify-content-center pt-4">
-                                    <p className='text-end m-0  text-secondary' style={{cursor:"pointer", fontSize:"12px"}}>
-                                        Not register yet? <span className='text-primary'>
-                                            Create an account
-                                        </span>
-                                    </p>
+                                    <Link to="/register">
+
+                                        <p className='text-end m-0  text-secondary' style={{ cursor: "pointer", fontSize: "12px" }}>
+                                            Not register yet? <span className='text-primary'>
+                                                Create an account
+                                            </span>
+                                        </p>
+                                    </Link>
                                 </div>
 
                             </div>

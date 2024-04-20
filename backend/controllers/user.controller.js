@@ -27,6 +27,8 @@ const link = require("../config/url.js");
  */
 const bcrypt = require("bcryptjs");
 const ProjectService = require("../services/project.service.js");
+const db = require("../models/index.js");
+
 
 userController.registerUser = async (req, res) => {
   try {
@@ -108,6 +110,26 @@ userController.getUserProjects = async (req, res) => {
 userController.getAllProjects = async (req, res) => {
   try {
     const project = await ProjectService.getAll();
+    res.status(200).send({
+      code: 200,
+      message: "Project retrive Successfully",
+      data: project,
+    });
+  } catch (error) {
+    console.log(error.toString());
+    return res.status(500).send(error.toString());
+  }
+};
+userController.search = async (req, res) => {
+  try {
+    const { query } = req.query;
+    const project = await ProjectService.getAll({
+      where: {
+        title: {
+          [db.Sequelize.Op.like]: `%${query}%`,
+        },
+      },
+    });
     res.status(200).send({
       code: 200,
       message: "Project retrive Successfully",

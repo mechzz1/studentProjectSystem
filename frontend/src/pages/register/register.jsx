@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 const schema = z.object({
     userName: z.string().min(3, { message: "User Name is required" }),
@@ -93,11 +94,13 @@ function register() {
                                     <Button variant="contained" type="submit" className='w-100 p-2' >Login</Button>
                                 </div>
                                 <div className="col-md-12 d-flex justify-content-center pt-4">
+                                <Link to="/login">
                                     <p className='text-end m-0  text-secondary' style={{ cursor: "pointer", fontSize: "12px" }}>
                                         Already have an account? <span className='text-primary'>
                                             login
                                         </span>
                                     </p>
+                                </Link>
                                 </div>
 
                             </div>

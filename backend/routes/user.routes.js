@@ -59,5 +59,9 @@ router.get(
   "/getAllProjects",
   UserController.getAllProjects
 );
+router.get(
+  "/search",
+  UserController.search
+);
 
 module.exports = router;
