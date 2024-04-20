@@ -24,7 +24,7 @@ function projects() {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://16.16.28.103:13000/users/getUserProjects',
+            url: 'https://student.syncstaging.com/users/getUserProjects',
             headers: {
                 'Content-Type': 'application/json',
                 'access-token': `${token}`

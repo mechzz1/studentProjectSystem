@@ -26,7 +26,7 @@ function login() {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://16.16.28.103:13000/users/login',
+            url: 'https://student.syncstaging.com/users/login',
             headers: {
                 'Content-Type': 'application/json'
             },

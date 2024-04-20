@@ -34,7 +34,7 @@ function create() {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'http://16.16.28.103:13000/users/create',
+      url: 'https://student.syncstaging.com/users/create',
       headers: {
         'Content-Type': 'application/json',
         'access-token': `${token}`

@@ -26,7 +26,7 @@ function register() {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://16.16.28.103:13000/users/register',
+            url: 'https://student.syncstaging.com/users/register',
             headers: {
                 'Content-Type': 'application/json'
             },
