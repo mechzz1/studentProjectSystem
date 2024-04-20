@@ -7,6 +7,7 @@ import styles from './landing.module.css'
 import NavBar from '../../components/navBar/navBar'
 import TextField from '@mui/material/TextField'
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { FaProjectDiagram } from "react-icons/fa";
 
 function landing() {
     const breakpointColumnsObj = {
@@ -58,8 +59,10 @@ function landing() {
     return (
         <>
 
-            <nav className="navbar navbar-light bg-light justify-content-between">
-                <a className="navbar-brand">ProjectHub</a>
+            <nav className={`navbar navbar-light  justify-content-between ${styles.navBg}`} >
+                <a className="navbar-brand">
+                <FaProjectDiagram className='mb-1 mr-2' color={"#EE7214"} />
+                    ProjectHub</a>
                 <form className="form-inline">
                     <Link to="/login">
                         <button className="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Login</button>
@@ -90,6 +93,7 @@ function landing() {
                                     startDate={item.startDate}
                                     endDate={item.endDate}
                                     phase={item.phase}
+                                    id={index}
 
                                 />
 

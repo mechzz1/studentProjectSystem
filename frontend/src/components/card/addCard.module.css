@@ -1,0 +1,30 @@
+.cardBg{
+display: inline-block;
+padding: 4px;
+border-radius: 5px;
+}
+
+.development{
+    background-color: #fceef3;
+    color: #ff689b !important;
+}
+
+.design{
+    background-color: #fff0da;
+    color: #e98e06 !important;
+}
+
+.testing{
+    background-color: #e6fdfc;
+    color: #3fcdc7 !important;
+}
+
+.deployment{
+    background-color: #ecebff;
+    color: #8660fe !important;
+}
+
+.completed{
+    background-color: #eafde7;
+    color: #41cf2e !important;
+}

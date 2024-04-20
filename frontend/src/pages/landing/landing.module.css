@@ -1,3 +1,11 @@
 .secBg{
-    background-color: #EEF5FF ;
+    background-color: #F9E8D9 ;
+}
+
+.navBg{
+    background-color: #F7B787 !important;
+}
+.navBg a{
+    color: #527853 !important;
+    font-weight: 600;
 }
